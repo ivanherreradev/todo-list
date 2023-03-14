@@ -1,6 +1,8 @@
+import { ADD__TODO, DELETE__TODO, UPDATE__TODO, COMPLETE__TODO } from './actions';
+
 export const todoReducer = (initialState, action) => {
     switch (action) {
-        case 'Complete Todo':
+        case COMPLETE__TODO:
             return initialState.map((todo) => {
                 if (todo.id === action.payload) {
                     return {
@@ -11,13 +13,13 @@ export const todoReducer = (initialState, action) => {
                 return todo;
             });
 
-        case 'Add Todo':
+        case ADD__TODO:
             return [...initialState, action.payload];
 
-        case 'Delete Todo':
+        case DELETE__TODO:
             return initialState.filter((todo) => todo.id !== action.payload);
 
-        case 'Update Todo':
+        case UPDATE__TODO:
             return initialState.map((todo) => {
                 if (todo.id === action.payload) {
                     return {
